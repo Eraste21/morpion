@@ -10,6 +10,7 @@ class Morpion:
         self.fenetre.title("Morpion")
         self.fenetre.geometry("650x750")
         self.fenetre.resizable(False, False)
+        self.fenetre.config(bg="#202124")
 
         # X commence toujours la partie.
         self.joueur_actuel = "X"
@@ -30,6 +31,7 @@ class Morpion:
             text="MORPION",
             font=("Arial", 30, "bold"),
             fg="blue",
+            bg="#202124",
         ).pack(pady=(25, 10))
 
         # Le score reste affiché pendant toutes les parties.
@@ -37,6 +39,8 @@ class Morpion:
             self.fenetre,
             text="Joueur 1 : 0     Joueur 2 : 0",
             font=("Arial", 16, "bold"),
+            fg="white",
+            bg="#202124",
         )
         self.label_score.pack(pady=10)
 
@@ -45,12 +49,14 @@ class Morpion:
             self.fenetre,
             text="Au tour de Joueur 1",
             font=("Arial", 16),
+            fg="white",
+            bg="#202124",
         )
         titre.pack(pady=10)
         self.label_tour = titre
 
         # Une frame permet de regrouper et centrer les neuf cases.
-        cadre_grille = tk.Frame(self.fenetre)
+        cadre_grille = tk.Frame(self.fenetre, bg="#202124")
         cadre_grille.pack(pady=15)
 
         # Les deux boucles permettent de construire une grille de 3 lignes
@@ -158,16 +164,23 @@ class Morpion:
         resultat = tk.Toplevel(self.fenetre)
         resultat.title("Résultat")
         resultat.resizable(False, False)
+        resultat.config(bg="#202124")
         resultat.transient(self.fenetre)
         resultat.grab_set()
         resultat.protocol("WM_DELETE_WINDOW", self.fenetre.destroy)
 
-        tk.Label(resultat, text=message, font=("Arial", 15)).pack(
+        tk.Label(
+            resultat,
+            text=message,
+            font=("Arial", 15),
+            fg="white",
+            bg="#202124",
+        ).pack(
             padx=30,
             pady=20,
         )
 
-        cadre_boutons = tk.Frame(resultat)
+        cadre_boutons = tk.Frame(resultat, bg="#202124")
         cadre_boutons.pack(padx=20, pady=(0, 20))
 
         tk.Button(
